@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 	"time"
 
@@ -53,7 +52,7 @@ func (m Model) loadStatus() tea.Cmd {
 		ctx, cancel := TimeoutCtx(5 * time.Second)
 		defer cancel()
 		lines, err := Status(ctx, m.dir)
-		fmt.Printf("%s", lines)
+		// fmt.Printf("%s", lines)
 		if err != nil {
 			return errMsg{err}
 		}
@@ -65,8 +64,8 @@ func (m Model) loadStatus() tea.Cmd {
 			}
 			// ovaj mu vraca vrednosti, --porcelain ima status
 			// ovde hocu da ispisem po grupama, staged.. da napravim detaljam opis i onda na tab diff radi
-			st := strings.TrimSpace(ln[:3])
-			path := strings.TrimSpace(ln[4:])
+			st := strings.TrimSpace(ln[:2])
+			path := strings.TrimSpace(ln[3:])
 			items = append(items, fileItem{status: st, path: path})
 		}
 		return statusMsg{items}
