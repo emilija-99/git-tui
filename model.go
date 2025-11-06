@@ -59,7 +59,7 @@ func (m Model) loadStatus() tea.Cmd {
 		}
 		items := make([]list.Item, 0, len(lines))
 		for _, ln := range lines {
-			fmt.Printf("ln: ", ln)
+			// fmt.Printf("ln: ", ln)
 			if strings.TrimSpace(ln) == "" {
 				continue
 			}
